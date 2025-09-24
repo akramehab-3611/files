@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project.akram</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="project.css">
+    <style>
+        /* Basic Page Styling */
+        body {
+            height: 2000px; /* To allow scrolling */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>  
+    <h1>Scroll Down to See the Button</h1>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">▲</button>
+
+    <script>
+        // Get the button
+        const backToTopButton = document.getElementById("backToTop");
+
+        // Show or hide the button based on scroll position
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+
+        // Scroll to the top smoothly
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+     <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a style="margin-left: 50px; font-weight: lighter; font-size: 25px;" class="navbar-brand" href="#">E N G A G E</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div style="margin-right: 30px;" class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a style="margin-right: 20px;" class="nav-link dropdown-toggle" href="project.html" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Home
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                  <li><a class="dropdown-item" href="#">Home 1</a></li>
+                  <li><a class="dropdown-item" href="#">Home 2</a></li>
+                  <li><a class="dropdown-item" href="#">Home 3</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a style="margin-right: 20px;" class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Shop
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="shopDropdown">
+                  <li><a class="dropdown-item" href="#">Shop with Sidebar</a></li>
+                  <li><a class="dropdown-item" href="#">Shop Fullwidth</a></li>
+                  <li><a class="dropdown-item" href="#">Single Product</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a style="margin-right: 20px;" class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a style="margin-right: 20px;" class="nav-link" href="#">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a style="margin-right: 20px;" class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <button class="open-btn" onclick="openPanel()"><img style="width: 50px;height: 50px;border-radius: 50%;" src="color.jpg" alt=""></button>
+
+      <!-- Side panel -->
+      <div id="sidePanel" class="side-panel">
+          <span class="close-btn" onclick="closePanel()">&times;</span>
+  
+          <!-- Boxes inside the panel -->
+              <div class="color-option" style="background-color: red; display: inline-block;" onclick="changeColor('red')"></div>
+              <div class="color-option" style="background-color: blue;display: inline-block;" onclick="changeColor('blue')"></div>
+              <div class="color-option" style="background-color: green;display: inline-block;" onclick="changeColor('green')"></div>
+              <div class="color-option" style="background-color: orange;display: inline-block;" onclick="changeColor('orange')"></div>
+              <div class="color-option" style="background-color: purple;display: inline-block;" onclick="changeColor('purple')"></div>
+              <div class="color-option" style="background-color: black;display: inline-block;" onclick="changeColor('black')"></div>
+              <div class="color-option" style="background-color: brown;display: inline-block;" onclick="changeColor('brown')"></div>
+              <div class="color-option" style="background-color: yellow;display: inline-block;" onclick="changeColor('yellow')"></div>
+              <div class="color-option" style="background-color: cyan;display: inline-block;" onclick="changeColor('cyan')"></div>
+              <div class="color-option" style="background-color: white; display: inline-block;" onclick="changeColor('white')"></div>
+              <div class="color-option" style="background-color: darkblue;display: inline-block;" onclick="changeColor('darkblue')"></div>
+              <div class="color-option" style="background-color: darkred; display: inline-block;" onclick="changeColor('darkred')"></div>			
+              <div class="text-content" id="colored">This text will change color</div>
+      </div>
+
+                <!--  al navbar -->
+              
+                  <!-- Fullscreen Hero Section -->
+                  <div class="hero-section" style="width: 100%; padding: 0 20px;">
+                    <div style="text-align: left; margin-left: 40px; width: 80%; max-width: 1200px;" class="card bg-transparent border-0">
+                      <div class="card-body">
+                        <h4 style="color: white; font-weight: 300; font-size: 25px;" class="card-subtitle mb-2">Welcome to</h4>
+                        <h1 style="color: white; font-size: 75px; font-weight: normal;" class="card-title">Dark Shop</h1>
+                        <p style="color: white; font-size: 25px; font-weight: 100; width: 80%; max-width: 500px;" class="card-text">
+                          We're the biggest, best equipped, and most advanced Web Agency in the greater Los Angeles area.
+                        </p>
+                        <a style="font-size: 17px; font-weight:600; background-color: white; color: black; border-color: transparent; width: 160px; height: 50px; margin-top: 12px;" href="#" class="card-link btn btn-primary">LEARN MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <a style="border-radius: 43%; width: 30px; height: 45px; text-align: center; margin-left: 650px; background-color: transparent; border-color: white; margin-top: 100px;" href="#next-section" class="btn btn-primary scroll-btn"></a>
+
+                  <div id="next-section" style="background-color: rgb(19, 18, 18);">
+                      <!-- Your next section content goes here -->
+                  </div>
+                  </div>
+                  
+              <div style="background-color: rgb(19, 18, 18);" class="newphoto1">
+                <div style="width: 50%; display: inline-block;">
+                    <h2 style="margin-top: 150px; margin-left: 50px; color: white;">Learn about us</h2>
+                        <p style="margin-bottom: 50px; font-size: 20px;width: 570px; margin-left: 50px; color: rgb(112, 111, 111);">We have been operating for over 30 years and are Members of The Federation of Master Builders. We work on projects big and small from small residential extensions to full house and commercial builds and we are registered NHBC house builders.</p>
+                       
+                      <div class="card-group">
+                        <div class="card">
+                            <img src="hat.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Beautiful Hat</h5>
+                              <p class="card-text"><small class="text-body-secondary">29.99$</small></p>
+                            </div>
+                            <div class="overlay">
+                              <a href="beautifulhat.html" class="view-details">View Details</a>
+                              <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img src="shoes.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Lightshoes</h5>
+                              <p class="card-text"><small class="text-body-secondary">149.99$</small></p>
+                            </div>
+                            <div class="overlay">
+                              <a href="Lightshoes.html" class="view-details">View Details</a>
+                              <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+                <div style="display: inline-block; width: 49%;">
+                    <img style="width: 100%; height: 1130px;" src="imgtop2.jpg" alt="">
+                </div>
+                <div style="display: inline-block; width: 50%;">
+                    <img style="width: 100%; height: 1130px;" src="imgtop.jpg" alt="">
+                </div>
+                <div style="width: 49%; display: inline-block;">
+                    <h2 style="margin-top: 150px; margin-left: 50px; color: white;">Learn about us</h2>
+                        <p style="margin-bottom: 50px; font-size: 20px;width: 570px; margin-left: 50px; color: rgb(112, 111, 111);">We have been operating for over 30 years and are Members of The Federation of Master Builders. We work on projects big and small from small residential extensions to full house and commercial builds and we are registered NHBC house builders.</p>
+                       
+                      <div class="card-group">
+                        <div class="card">
+                            <img src="brownshoes.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Brown Shoes</h5>
+                              <p class="card-text"><small class="text-body-secondary">89.99$</small></p>
+                            </div>
+                            <div class="overlay">
+                              <a href="brownshoes.html" class="view-details">View Details</a>
+                              <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img src="backpack.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Backpack</h5>
+                              <p class="card-text"><small class="text-body-secondary">59.99$</small></p>
+                            </div>
+                            <div class="overlay">
+                              <a href="backpack.html" class="view-details">View Details</a>
+                              <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                          </div>
+                      </div>
+                
+              </div>
+              <div style="background-color: rgb(27, 26, 26);">
+                <br>
+                <h1 style="color: white; text-align: center;margin-top: 50px; font-weight: 400;font-size: 37px;">Best Sellers</h1>
+                <p style="color: rgb(105, 104, 104); width: 620px; margin-left: 380px; margin-top: 25px;text-align: center;font-size: 20px;">Faucibus dictum in eget metus. Duis suscipit elit sem, sed mattis tellus accumsan eget. Quisque consequat venenatis rutrum. Quisque posuere enim augue, in rhoncus diam dictum non. Etiam mollis pulvinar nisl.</p>
+                <div style="margin-left: 80px; margin-right: 10px; width: 250px;display: inline-block;" class="card">
+                    <img src="brownshoes.jpg" style="height: 200px; width: 230px;" src="backpack.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Brown Shoes</h5>
+                      <p class="card-text"><small class="text-body-secondary">89.99$</small></p>
+                    </div>
+                    <div class="overlay">
+                      <a href="brownshoes.html" class="view-details">View Details</a>
+                      <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                  </div>
+                  <div style="margin-right: 10px; width: 250px;display: inline-block;" class="card">
+                    <img src="shoes.jpg" style="height: 200px; width: 230px;" src="backpack.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Light shoes</h5>
+                      <p class="card-text"><small class="text-body-secondary">149.99$</small></p>
+                    </div>
+                    <div class="overlay">
+                      <a href="Lightshoes.html" class="view-details">View Details</a>
+                      <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                  </div>
+                  <div style="margin-right: 10px; width: 250px;display: inline-block;" class="card">
+                    <img src="hat.jpg" style="height: 200px; width: 230px;" src="backpack.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Hat</h5>
+                      <p class="card-text"><small class="text-body-secondary">29.99$</small></p>
+                    </div>
+                    <div class="overlay">
+                      <a href="beautifulhat.html" class="view-details">View Details</a>
+                      <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                  </div>
+                  <div style="margin-right: 10px; width: 250px;display: inline-block;" class="card">
+                    <img src="backpack.jpg" style="height: 200px; width: 230px;" src="backpack.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Brown Shoes</h5>
+                      <p class="card-text"><small class="text-body-secondary">59.99$</small></p>
+                    </div>
+                    <div class="overlay">
+                      <a href="backpack.html" class="view-details">View Details</a>
+                      <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                  </div>
+                  <br><br><br><br><br>
+                  <div style="background-color: rgb(19, 18, 18);">
+                    <br><br>
+                    <h1 style="color: white; text-align: center;font-weight: 400;font-size: 35px;">Why our store?</h1>
+                    <p style="color: rgb(105, 104, 104); width: 490px; margin-left: 430px; margin-top: 25px;text-align: center;">Duis suscipit elit sem, sed mattis tellus accumsan eget. Quisque consequat venenatis rutrum. Quisque posuere enim augue, in rhoncus diam dictum non.Nunc id ante quis tellus faucibus dictum in eget metus.</p>
+                    <div style="width: 400px;margin-left: 70px;display: inline-block;">
+                        <h2 style="font-weight: 500;font-size: 22px;color: white;font-weight: 400;">Premium Support</h2>
+                        <p style="color: rgb(112, 111, 111);margin-top: 15px;">Ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies nisi at scelerisque pellentesque. Nunc feugiat felis vitae aliquet consequat. Aliquam ullamcorper.</p>
+                    </div>
+                    <div style="width: 400px;margin-left: 20px;display: inline-block;margin-top: 50px;">
+                        <h2 style="font-weight: 500;font-size: 22px;color: white;font-weight: 400;">Incredible Team</h2>
+                        <p style="color: rgb(112, 111, 111);margin-top: 15px;">Ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies nisi at scelerisque pellentesque. Nunc feugiat felis vitae aliquet consequat. Aliquam ullamcorper.</p>
+                    </div>
+                    <div style="width: 400px;margin-left: 20px;display: inline-block;">
+                        <h2 style="font-weight: 500;font-size: 22px;color: white;font-weight: 400;">Incredible Team</h2>
+                        <p style="color: rgb(112, 111, 111);margin-top: 15px;">Ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies nisi at scelerisque pellentesque. Nunc feugiat felis vitae aliquet consequat. Aliquam ullamcorper.</p>
+                    </div>
+                    <div style="width: 400px;margin-left: 70px;display: inline-block;margin-top: 30px;">
+                        <h2 style="font-weight: 500;font-size: 22px;color: white;font-weight: 400;">Facilities</h2>
+                        <p style="color: rgb(112, 111, 111);margin-top: 15px;">Ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies nisi at scelerisque pellentesque. Nunc feugiat felis vitae aliquet consequat. Aliquam ullamcorper.</p>
+                    </div>
+                    <div style="width: 400px;margin-left: 20px;display: inline-block;font-weight: 400;">
+                        <h2 style="font-weight: 500;font-size: 22px;color: white;font-weight: 400;">Best Equipment</h2>
+                        <p style="color: rgb(112, 111, 111);margin-top: 15px;">Ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies nisi at scelerisque pellentesque. Nunc feugiat felis vitae aliquet consequat. Aliquam ullamcorper.</p>
+                    </div>
+                    <div style="width: 400px;margin-left: 20px;display: inline-block;font-weight: 400;">
+                        <h2 style="font-weight: 500;font-size: 22px;color: white;font-weight: 400;">Premium Support</h2>
+                        <p style="color: rgb(112, 111, 111);margin-top: 15px;">Ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies nisi at scelerisque pellentesque. Nunc feugiat felis vitae aliquet consequat. Aliquam ullamcorper.</p>
+                    </div>
+                    <br><br><br><br>
+                    <div class="heyyo">
+                        <br><br><br><br><br>
+                        <h2 style="font-weight: 400;font-size: 40px; text-align: center;">Feeling convinced?</h2>
+                        <p style="font-size: 23px;font-weight: 400;color: rgb(192, 185, 185); margin-top: 13px;">I am a subtitle, feel free to change me!</p>
+                        <button class="custom-btn" style="border-color: white;border-radius: 5px;height: 70px;width: 160px;font-weight: 500">VISIT SHOP</button>
+                    </div>
+                 </div>
+                 <div></div>
+                  
+            </div>
+                  
+      
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <script>
+        function openPanel() {
+            document.getElementById("sidePanel").style.width = "250px";
+        }
+
+        function closePanel() {
+            document.getElementById("sidePanel").style.width = "0";
+        }
+		function changeColor(color) {
+            document.getElementById("colored").style.color = color;
+        }
+    </script>
+</body>
+</html>

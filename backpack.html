@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpack</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.css">
+    <style>
+        body {
+            background-color: #202020;
+            color: white;
+        }
+        .breadcrumb-container {
+            background-color: #242424;
+            padding: 30px 60px;
+        }
+        .breadcrumb a {
+            text-decoration: none;
+            color: gray;
+        }
+        .breadcrumb a:hover {
+            color: white;
+        }
+        .product-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 50px 0;
+        }
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 500px; /* Smaller image size */
+            border-radius: 10px;
+            transition: transform 0.3s ease-out; /* Smooth transition for the effect */
+        }
+        .product-image:hover img {
+            transform: scale(1.1); /* Scale the image slightly when hovered */
+        }
+        .product-details {
+            max-width: 500px;
+            padding-left: 50px;
+        }
+        .price {
+            font-size: 24px;
+            color: #d35400;
+            margin: 10px 0;
+        }
+        .btn-buy {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-buy:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .cart-info {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #d35400;
+        }
+        .tabs-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .tabs-container .btn-tab {
+            background-color: transparent;
+            border: 2px solid transparent;
+            color: white;
+            padding: 10px 20px;
+            margin-right: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .tabs-container .btn-tab:hover {
+            border: 2px solid #007bff; /* Blue border on hover */
+            color: #007bff;
+        }
+        .tabs-container .btn-tab.active {
+            border: 2px solid #007bff; /* Active button border color */
+            color: #007bff;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #28a745; /* Green background */
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Bar animation for "Product added to cart" */
+        .progress-bar {
+            display: none;
+            height: 5px;
+            background-color: #28a745;
+            animation: progressAnimation 3s ease-out forwards;
+        }
+
+        @keyframes progressAnimation {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-5" href="#" style="font-weight: lighter; font-size: 25px;">E N G A G E</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse me-3" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle me-3" href="project.html" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Home
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                  <li><a class="dropdown-item" href="#">Home 1</a></li>
+                  <li><a class="dropdown-item" href="#">Home 2</a></li>
+                  <li><a class="dropdown-item" href="#">Home 3</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle me-3" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Shop
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="shopDropdown">
+                  <li><a class="dropdown-item" href="#">Shop with Sidebar</a></li>
+                  <li><a class="dropdown-item" href="#">Shop Fullwidth</a></li>
+                  <li><a class="dropdown-item" href="#">Single Product</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link me-3" href="#">About</a></li>
+              <li class="nav-item"><a class="nav-link me-3" href="#">Blog</a></li>
+              <li class="nav-item"><a class="nav-link me-3" href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <br><br>
+
+    <div class="breadcrumb-container">
+        <h3 class="d-inline-block">Backpack</h3>
+        <span class="float-end">
+            <a style="color: rgb(83, 82, 82); text-decoration: none;" href="project.html">Home</a>  <a style="color:rgb(83, 82, 82); text-decoration: none;" href="#">/ Backpack</a>
+        </span>
+    </div>
+
+    <div class="container">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="backpack.jpg" alt="Brown Shoes">
+            </div>
+            <div class="product-details">
+                <h3>Backpack</h3>
+                <p style="color: gray; width: 105%;">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                <hr>
+                <div style="color: rgb(71, 71, 71);font-size: 30px;" class="price">$59.99</div>
+
+                <!-- Quantity Selection -->
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-secondary me-2" onclick="decreaseQuantity()">-</button>
+                    <span id="productQuantity" class="fs-4">1</span>
+                    <button class="btn btn-secondary ms-2" onclick="increaseQuantity()">+</button>
+                </div>
+
+                <br>
+
+                <!-- Add to Cart Button -->
+                <button class="btn-buy" onclick="addToCart()">Add to Cart</button>
+                <div style="margin-top: 15px;">
+                    <p style="color: gray;">Category: <a style="text-decoration: none;color: white;" href="">Backpack</a></p>
+                </div>
+
+                <!-- Cart Status -->
+                <div id="cartMessage" class="cart-info"></div>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">Product successfully added to cart!</div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar"></div>
+
+        <!-- Tabs for Description and Reviews -->
+        <div class="tabs-container">
+            <button class="btn-tab active" id="descriptionTab" onclick="toggleTab('description')">Description</button>
+            <button class="btn-tab" id="reviewsTab" onclick="toggleTab('reviews')">Reviews (1)</button>
+        </div>
+
+        <div id="descriptionContent" class="tab-content">
+            <h2 style="margin-top: 20px; margin-bottom: 15px;">Description</h2>
+            <p style="color:rgb(112, 112, 112);">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        </div>
+
+        <div id="reviewsContent" class="tab-content" style="display: none;">
+            <p>Reviews: 1 review available.</p>
+        </div>
+    </div>
+
+    <script>
+        let quantity = 1;
+        let totalAdded = 0;
+
+        function increaseQuantity() {
+            quantity++;
+            document.getElementById('productQuantity').innerText = quantity;
+        }
+
+        function decreaseQuantity() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('productQuantity').innerText = quantity;
+            }
+        }
+
+        function addToCart() {
+            totalAdded += quantity;
+            document.getElementById('cartMessage').innerText = `You have added ${totalAdded} item(s) to your cart.`;
+
+            // Show success message and progress bar
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('progressBar').style.display = 'block';
+
+            // Hide the success message after 3 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('progressBar').style.display = 'none';
+            }, 3000);
+        }
+
+        function toggleTab(tab) {
+            // Hide both tab contents
+            document.getElementById('descriptionContent').style.display = 'none';
+            document.getElementById('reviewsContent').style.display = 'none';
+
+            // Remove active class from both buttons
+            document.getElementById('descriptionTab').classList.remove('active');
+            document.getElementById('reviewsTab').classList.remove('active');
+
+            // Show the selected tab content
+            if (tab === 'description') {
+                document.getElementById('descriptionContent').style.display = 'block';
+                document.getElementById('descriptionTab').classList.add('active');
+            } else if (tab === 'reviews') {
+                document.getElementById('reviewsContent').style.display = 'block';
+                document.getElementById('reviewsTab').classList.add('active');
+            }
+        }
+    </script>
+
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+</body>
+</html>

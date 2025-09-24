@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin-left: 50px;
+      margin-top: 50px;
+      background-color: rgb(19, 18, 18);
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    div{
+        background-color: rgb(68, 66, 66);
+        width: 600px;
+        text-align: center;
+        border-radius: 15%;
+    }
+    input{
+        width: 500px;
+        border-radius: 8%;
+        border-color: wheat;
+        border-width: 3px;
+    }
+  </style>
+</head>
+<body>
+    <div class="all">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+          <label for="username">Username</label>
+          <br>
+          <input type="text" id="username" required>
+          <p id="usernameError" class="error"></p>
+      
+          <label for="password">Password</label>
+          <br>
+          <input type="password" id="password" required>
+          <p id="passwordError" class="error"></p>
+      
+          <label for="age">Age</label>
+          <br>
+          <input type="number" id="age" required>
+          <p id="ageError" class="error"></p>
+      
+          <label for="email">Email</label>
+          <br>
+          <input type="email" id="email" required>
+          <p id="emailError" class="error"></p>
+      
+          <input style="width: 150px;border-radius: 8%;border-color: black;border-width: 3px;" type="submit" value="Sign Up">
+        </form>
+      
+        <p>Click here to <a style="color: blue;" href="Login.html">Login</a></p>
+    </div>
+ 
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Clear previous error messages
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+      // Form field values
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const age = document.getElementById("age").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      let valid = true;
+
+      // Username validation
+      if (username.length <= 3) {
+        document.getElementById("usernameError").textContent = "Username must be more than 3 characters.";
+        valid = false;
+      }
+
+      // Password validation
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (!passwordRegex.test(password)) {
+        document.getElementById("passwordError").textContent = "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.";
+        valid = false;
+      }
+
+      // Age validation
+      if (!Number.isInteger(+age) || +age <= 18) {
+        document.getElementById("ageError").textContent = "Age must be a number greater than 18.";
+        valid = false;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("emailError").textContent = "Invalid email format.";
+        valid = false;
+      }
+
+      if (valid) {
+        const userData = `Username: ${username}\nPassword: ${password}\nAge: ${age}\nEmail: ${email}\n`;
+
+        // Append to Data.txt or create it
+        let existingData = localStorage.getItem("Data.txt") || "";
+        existingData += userData;
+        localStorage.setItem("Data.txt", existingData);
+
+        // Create a Blob and trigger download of updated file
+        const blob = new Blob([existingData], { type: "text/plain" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "Data.txt";
+        link.click();
+
+        alert("Data successfully saved to Data.txt.");
+        document.getElementById("signupForm").reset();
+      }
+    });
+  </script>
+</body>
+</html>
